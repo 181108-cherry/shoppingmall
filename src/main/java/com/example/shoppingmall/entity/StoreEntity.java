@@ -56,6 +56,9 @@ public class StoreEntity {
 	@Column(name = "withdrawal_evaluation", nullable = false)
 	private Integer withdrawalEvaluation;            // 청약철회평가
 
+	@Column(name = "payment_method_evaluation", nullable = false)
+	private Integer paymentMethodEvaluation;		// 결제방법평가
+
 	@Column(name = "terms_evaluation", nullable = false)
 	private Integer termsEvaluation;                 // 이용약관평가
 
