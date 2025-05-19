@@ -27,13 +27,13 @@ public class StoreEntity {
 	private String domain;                           // 도메인명
 
 	@Column(name = "telephone_number")
-	private Integer telephoneNumber;                 // 전화번호
+	private String telephoneNumber;                 // 전화번호
 
 	@Column(name = "official_email", length = 100)
 	private String officialEmail;                    // 운영자이메일
 
 	@Column(name = "registration_number", nullable = false)
-	private Integer registrationNumber;              // 통신판매번호
+	private String registrationNumber;              // 통신판매번호
 
 	@Column(name = "business_type", length = 25)
 	private String businessType;                     // 영업형태
