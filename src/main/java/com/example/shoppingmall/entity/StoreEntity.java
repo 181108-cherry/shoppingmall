@@ -109,5 +109,5 @@ public class StoreEntity {
 
 	@Column(name = "monitoring_date", nullable = false)
 	private LocalDate monitoringDate;                // 모니터링날짜
-
+	// 111
 }
