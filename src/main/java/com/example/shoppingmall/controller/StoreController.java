@@ -3,6 +3,7 @@ package com.example.shoppingmall.controller;
 import com.example.shoppingmall.dto.StoreDto;
 import com.example.shoppingmall.service.StoreService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class StoreController {
     @PostMapping
     public ResponseEntity<StoreDto> createStore(@Valid @RequestBody StoreDto storeDto) {
         StoreDto created = storeService.createStore(storeDto);
-        return ResponseEntity.ok(created);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     // Update
