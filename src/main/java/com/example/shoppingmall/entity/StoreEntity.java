@@ -2,22 +2,30 @@ package com.example.shoppingmall.entity;
 
 import java.time.LocalDate;
 
+import com.example.shoppingmall.dto.StoreDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "store")
+@Getter
+@Setter
 public class StoreEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;                                 // PK
+	private Long id;
 
-	@Column(name = "company_name", length = 25, nullable = false)
+	// PK
+	@Column(name = "company_name", length = 25, nullable = false) // sql null 금지
 	private String companyName;                      // 상호
 
 	@Column(name = "shoppingmall_name", length = 100, nullable = false)
@@ -50,8 +58,8 @@ public class StoreEntity {
 	@Column(nullable = false)
 	private Integer rating;                          // 전체평가
 
-	@Column(name = "businsee_info_rating", nullable = false)
-	private Integer businseeInfoRating;              // 사업자정보표시평가
+	@Column(name = "business_info_rating", nullable = false)
+	private Integer businessInfoRating;              // 사업자정보표시평가
 
 	@Column(name = "withdrawal_evaluation", nullable = false)
 	private Integer withdrawalEvaluation;            // 청약철회평가
@@ -113,5 +121,5 @@ public class StoreEntity {
 	@Column(name = "monitoring_date", nullable = false)
 	private LocalDate monitoringDate;                // 모니터링날짜
 
-	///  123123
+	///  123123 ?? 이것은 무엇인가요 -시습-
 }
