@@ -2,15 +2,12 @@ package com.example.shoppingmall.entity;
 
 import java.time.LocalDate;
 
-import com.example.shoppingmall.dto.StoreDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,9 +19,8 @@ public class StoreEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long id; // PK
 
-	// PK
 	@Column(name = "company_name", length = 25, nullable = false) // sql null 금지
 	private String companyName;                      // 상호
 
@@ -65,7 +61,7 @@ public class StoreEntity {
 	private Integer withdrawalEvaluation;            // 청약철회평가
 
 	@Column(name = "payment_method_evaluation", nullable = false)
-	private Integer paymentMethodEvaluation;		// 결제방법평가
+	private Integer paymentMethodEvaluation;        // 결제방법평가
 
 	@Column(name = "terms_evaluation", nullable = false)
 	private Integer termsEvaluation;                 // 이용약관평가
@@ -121,5 +117,4 @@ public class StoreEntity {
 	@Column(name = "monitoring_date", nullable = false)
 	private LocalDate monitoringDate;                // 모니터링날짜
 
-	///  123123 ?? 이것은 무엇인가요 -시습-
 }
