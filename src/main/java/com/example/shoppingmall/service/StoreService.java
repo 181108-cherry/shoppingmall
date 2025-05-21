@@ -3,8 +3,12 @@ package com.example.shoppingmall.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.example.shoppingmall.dto.PageableStoreResponseDto;
 import com.example.shoppingmall.dto.StoreDto;
 import com.example.shoppingmall.dto.StoreSummaryResponseDto;
 import com.example.shoppingmall.entity.StoreEntity;
@@ -64,6 +68,22 @@ public class StoreService {
 		}
 
 		return result;
+	}
+
+	public PageableStoreResponseDto findStoresPaging(int rating, String status, int page, int size) {
+		Pageable pageable = PageRequest.of(page, size);
+		Page<StoreEntity> entityPage = storeRepository.findByRatingAndStatus(rating, status, pageable);
+
+		List<StoreSummaryResponseDto> dtoList = new ArrayList<>();
+		List<StoreEntity> content = entityPage.getContent();
+
+		for (int i = 0; i < content.size(); i++) {
+			StoreEntity entity = content.get(i);
+			StoreSummaryResponseDto dto = StoreSummaryResponseDto.from(entity);
+			dtoList.add(dto);
+		}
+
+		return new PageableStoreResponseDto(dtoList, entityPage.getNumber(), entityPage.getSize());
 	}
 
 	private static void updateEntityFromDto(StoreEntity entity, StoreDto dto) {
