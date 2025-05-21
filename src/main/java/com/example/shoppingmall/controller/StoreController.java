@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.shoppingmall.dto.StoreDto;
+import com.example.shoppingmall.dto.StorePageableResponseDto;
 import com.example.shoppingmall.dto.StoreSummaryResponseDto;
 import com.example.shoppingmall.service.StoreService;
 
@@ -53,12 +54,23 @@ public class StoreController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@GetMapping("/top10")
+	@GetMapping("/search/top10")
 	public ResponseEntity<List<StoreSummaryResponseDto>> getTop10Stores(
 		@RequestParam int rating,
 		@RequestParam String status
 	) {
 		List<StoreSummaryResponseDto> result = storeService.findTop10ByRatingAndStatus(rating, status);
 		return ResponseEntity.ok(result);
+	}
+
+	@GetMapping("/search/pageable")
+	public ResponseEntity<StorePageableResponseDto> getStoresWithPaging(
+		@RequestParam int rating,
+		@RequestParam String status,
+		@RequestParam int page,
+		@RequestParam int size
+	) {
+		StorePageableResponseDto response = storeService.findStoresPaging(rating, status, page, size);
+		return ResponseEntity.ok(response);
 	}
 }
