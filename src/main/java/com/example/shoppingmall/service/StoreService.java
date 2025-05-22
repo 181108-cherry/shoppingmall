@@ -86,6 +86,18 @@ public class StoreService {
 		return new StorePageableResponseDto(dtoList, entityPage.getNumber(), entityPage.getSize());
 	}
 
+	// status로 필터링된 업체 리스트 반환
+	public List<StoreSummaryResponseDto> findStoresByStatus(String status) {
+		List<StoreEntity> entities = storeRepository.findByStatusOrderByMonitoringDateDesc(status);
+
+		List<StoreSummaryResponseDto> result = new ArrayList<>();
+		for (StoreEntity entity : entities) {
+			result.add(StoreSummaryResponseDto.from(entity));
+		}
+
+		return result;
+	}
+
 	private static void updateEntityFromDto(StoreEntity entity, StoreDto dto) {
 		entity.setCompanyName(dto.getCompanyName());
 		entity.setShoppingmallName(dto.getShoppingmallName());
