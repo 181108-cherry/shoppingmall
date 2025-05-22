@@ -1,8 +1,11 @@
 package com.example.shoppingmall.service;
 
 import com.example.shoppingmall.dto.StoreDto;
+import com.example.shoppingmall.dto.StorePageableResponseDto;
+import com.example.shoppingmall.dto.StoreSummaryResponseDto;
 import com.example.shoppingmall.entity.StoreEntity;
 import com.example.shoppingmall.repository.StoreRepository;
+
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +20,7 @@ public class StoreService {
 
     // Create
     public StoreDto createStore(StoreDto dto) {
-          entity = dtoToEntity(dto);
+        StoreEntity entity = dtoToEntity(dto);
         StoreEntity savedEntity = storeRepository.save(entity);
         return entityToDto(savedEntity);
     }
@@ -47,7 +50,7 @@ public class StoreService {
     }
 
     private static void updateEntityFromDto(StoreEntity entity, StoreDto dto) {
-        entity.companyName =dto.getCompanyName();
+        entity.setCompanyName(dto.getCompanyName());
         entity.setShoppingmallName(dto.getShoppingmallName());
         entity.setDomain(dto.getDomain());
         entity.setTelephoneNumber(dto.getTelephoneNumber());
