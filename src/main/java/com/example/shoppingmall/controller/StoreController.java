@@ -22,7 +22,7 @@ import com.example.shoppingmall.service.StoreService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/stores")
+@RequestMapping("/api/stores")
 public class StoreController {
 
 	private final StoreService storeService;
@@ -56,8 +56,8 @@ public class StoreController {
 
 	@GetMapping("/search/top10")
 	public ResponseEntity<List<StoreSummaryResponseDto>> getTop10Stores(
-		@RequestParam int rating,
-		@RequestParam String status
+		@RequestParam(name = "rating") int rating,
+		@RequestParam(name = "status") String status
 	) {
 		List<StoreSummaryResponseDto> result = storeService.findTop10ByRatingAndStatus(rating, status);
 		return ResponseEntity.ok(result);
@@ -65,10 +65,10 @@ public class StoreController {
 
 	@GetMapping("/search/pageable")
 	public ResponseEntity<StorePageableResponseDto> getStoresWithPaging(
-		@RequestParam int rating,
-		@RequestParam String status,
-		@RequestParam int page,
-		@RequestParam int size
+		@RequestParam(name = "rating") int rating,
+		@RequestParam(name = "status") String status,
+		@RequestParam(name = "page") int page,
+		@RequestParam(name = "size") int size
 	) {
 		StorePageableResponseDto response = storeService.findStoresPaging(rating, status, page, size);
 		return ResponseEntity.ok(response);
