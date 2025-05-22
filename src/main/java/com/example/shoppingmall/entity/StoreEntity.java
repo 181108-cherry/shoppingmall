@@ -17,7 +17,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "store")
 @Getter
-@Setter
+
 public class StoreEntity {
 
 	@Id
@@ -122,4 +122,20 @@ public class StoreEntity {
 	private LocalDate monitoringDate;                // 모니터링날짜
 
 	///  123123 ?? 이것은 무엇인가요 -시습-
+
+
+	// 만들어야하는 메서드
+
+	// 모든 것을 다 넣은 uefd
+	public void updateEntityFromDto(StoreDto dto)
+	{
+		this.companyName = dto.getCompanyName();
+		this.shoppingmallName = dto.getShoppingmallName();
+		this.domain = dto.getDomain();
+	}
+
+	// response할 메서드
+	public static storeDtoFromEntity(StoreEntity entity) {
+		entity.
+	}
 }

@@ -17,7 +17,7 @@ public class StoreService {
 
     // Create
     public StoreDto createStore(StoreDto dto) {
-        StoreEntity entity = dtoToEntity(dto);
+          entity = dtoToEntity(dto);
         StoreEntity savedEntity = storeRepository.save(entity);
         return entityToDto(savedEntity);
     }
@@ -47,7 +47,7 @@ public class StoreService {
     }
 
     private static void updateEntityFromDto(StoreEntity entity, StoreDto dto) {
-        entity.setCompanyName(dto.getCompanyName());
+        entity.companyName =dto.getCompanyName();
         entity.setShoppingmallName(dto.getShoppingmallName());
         entity.setDomain(dto.getDomain());
         entity.setTelephoneNumber(dto.getTelephoneNumber());
