@@ -12,4 +12,8 @@ public interface StoreRepository extends JpaRepository<StoreEntity, Long> {
 	List<StoreEntity> findTop10ByRatingAndStatus(int rating, String status);
 
 	Page<StoreEntity> findByRatingAndStatus(int rating, String status, Pageable pageable);
+
+	// status로 필터링하고 모니터링 날짜 내림차순 정렬
+	List<StoreEntity> findByStatusOrderByMonitoringDateDesc(String status);
+
 }
