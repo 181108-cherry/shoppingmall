@@ -42,7 +42,7 @@ public class StoreEntity {
 	@Column(name = "business_type", length = 25)
 	private String businessType;                     // 영업형태
 
-	@Column(name = "intial_registration_date", nullable = false)
+	@Column(name = "initial_registration_date", nullable = false)
 	private LocalDate initialRegistrationDate;       // 최초신고일자
 
 	@Column(length = 100)
