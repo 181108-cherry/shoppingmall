@@ -6,9 +6,12 @@ import com.example.shoppingmall.entity.StoreEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
-@AllArgsConstructor
+@Setter
+@NoArgsConstructor
 public class StoreCsvDto {
 	private String companyName;
 	private String shoppingmallName;
@@ -44,17 +47,42 @@ public class StoreCsvDto {
 	private LocalDate monitoringDate;
 
 	public static StoreCsvDto fromCsv(String[] c) {
-		return new StoreCsvDto(
-			c[0], c[1], c[2], c[3], c[4], c[5], c[6],
-			LocalDate.parse(c[7]), c[8], c[9],
-			Integer.parseInt(c[10]), Integer.parseInt(c[11]), Integer.parseInt(c[12]),
-			Integer.parseInt(c[13]), Integer.parseInt(c[14]), Integer.parseInt(c[15]),
-			c[16], c[17], c[18], c[19], c[20], c[21],
-			c[22], c[23], c[24], c[25], c[26], c[27],
-			c[28], c[29], c[30], LocalDate.parse(c[31])
-			);
-
+		StoreCsvDto dto = new StoreCsvDto();
+		dto.companyName = CsvDataSubStr.sanitize("companyName", c[0]);
+		dto.shoppingmallName = CsvDataSubStr.sanitize("shoppingmallName", c[1]);
+		dto.domain = CsvDataSubStr.sanitize("domain", c[2]);
+		dto.telephoneNumber = CsvDataSubStr.sanitize("telephoneNumber", c[3]);
+		dto.officialEmail = CsvDataSubStr.sanitize("officialEmail", c[4]);
+		dto.registrationNumber = CsvDataSubStr.sanitize("registrationNumber", c[5]);
+		dto.businessType = CsvDataSubStr.sanitize("businessType", c[6]);
+		dto.initialRegistrationDate = CsvDataSubStr.parseDate(c[7]);
+		dto.address = CsvDataSubStr.sanitize("address", c[8]);
+		dto.status = CsvDataSubStr.sanitize("status", c[9]);
+		dto.rating = CsvDataSubStr.parseInt(c[10]);
+		dto.businessInfoRating = CsvDataSubStr.parseInt(c[11]);
+		dto.withdrawalEvaluation = CsvDataSubStr.parseInt(c[12]);
+		dto.paymentMethodEvaluation = CsvDataSubStr.parseInt(c[13]);
+		dto.termsEvaluation = CsvDataSubStr.parseInt(c[14]);
+		dto.privacySecurityEvaluation = CsvDataSubStr.parseInt(c[15]);
+		dto.mainItemsHandled = CsvDataSubStr.sanitize("mainItemsHandled", c[16]);
+		dto.withdrawalPossible = CsvDataSubStr.sanitize("withdrawalPossible", c[17]);
+		dto.initialScreenRequiredDisplay = CsvDataSubStr.sanitize("initialScreenRequiredDisplay", c[18]);
+		dto.paymentMethods = CsvDataSubStr.sanitize("paymentMethods", c[19]);
+		dto.termsComplianceLevel = CsvDataSubStr.sanitize("termsComplianceLevel", c[20]);
+		dto.privacyPolicy = CsvDataSubStr.sanitize("privacyPolicy", c[21]);
+		dto.excessivePrivacyDataRequested = CsvDataSubStr.sanitize("excessivePrivacyDataRequested", c[22]);
+		dto.buyerProtectionService = CsvDataSubStr.sanitize("buyerProtectionService", c[23]);
+		dto.secureServerInstalled = CsvDataSubStr.sanitize("secureServerInstalled", c[24]);
+		dto.certificationMark = CsvDataSubStr.sanitize("certificationMark", c[25]);
+		dto.estimatedDeliveryDisplay = CsvDataSubStr.sanitize("estimatedDeliveryDisplay", c[26]);
+		dto.returnShippingFee = CsvDataSubStr.sanitize("returnShippingFee", c[27]);
+		dto.complaintBoard = CsvDataSubStr.sanitize("complaintBoard", c[28]);
+		dto.membershipCancelationMethod = CsvDataSubStr.sanitize("membershipCancelationMethod", c[29]);
+		dto.siteEstablishmentYear = CsvDataSubStr.sanitize("siteEstablishmentYear", c[30]);
+		dto.monitoringDate = CsvDataSubStr.parseDate(c[31]);
+		return dto;
 	}
+
 
 	public StoreEntity toEntity() {
 		return StoreEntity.builder()
