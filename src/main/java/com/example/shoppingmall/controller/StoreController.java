@@ -3,6 +3,7 @@ package com.example.shoppingmall.controller;
 import java.util.List;
 
 import com.example.shoppingmall.dto.StoreFilterResponse;
+import com.example.shoppingmall.entity.StoreEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.ErrorResponse;
@@ -103,5 +104,12 @@ public class StoreController {
 		}
 		return ResponseEntity.ok(new StoreFilterResponse(result));  // 성공적인 조회 결과 반환
 	}
+
+
+	@GetMapping("/search-by-rating")
+	public List<StoreEntity> searchStoresByRating(@RequestParam("rating") int rating) {
+		return storeService.rating(rating);
+	}
+
 
 }

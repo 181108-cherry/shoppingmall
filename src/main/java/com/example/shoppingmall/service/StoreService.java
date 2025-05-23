@@ -170,4 +170,8 @@ public class StoreService {
 		return dto;
 	}
 
+	public List<StoreEntity> rating(int rating) {
+		return storeRepository.findByRating(rating, PageRequest.of(0, 10));
+	}
+
 }
