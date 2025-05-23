@@ -17,4 +17,74 @@
 
 ## 📁 폴더 구조
 ```
+📦src
+ ┣ 📂main
+ ┃ ┣ 📂java
+ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┗ 📂example
+ ┃ ┃ ┃ ┃ ┗ 📂shoppingmall
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreController.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StoreDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StoreFilterResponse.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StorePageableResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StoreResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreSummaryResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreEntity.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂filter
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂commond
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂exception
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BaseException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ErrorCode.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜GlobalExceptionHandler.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂response
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommonResponse.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ResponseCode.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂csv
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CsvController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CsvDataSubStr.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CsvLoader.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CsvService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreCsvDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂query
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StoreQueryController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StoreQueryDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreQueryService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂search
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StoreSearchCondition.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StoreSearchController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StoreSearchCursorRequest.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StoreSearchRepositoryCustom.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StoreSearchRepositoryImpl.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜StoreSearchResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreSearchService.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreService.java
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜ShoppingmallApplication.java
+ ┃ ┗ 📂resources
+ ┃ ┃ ┣ 📜application.properties
+ ┃ ┃ ┗ 📜shoppingmall.csv
+ ┗ 📂test
+ ┃ ┗ 📂java
+ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┗ 📂example
+ ┃ ┃ ┃ ┃ ┗ 📂shoppingmall
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜ShoppingmallApplicationTests.java
+
 ```
+
+
+## 🛠️ 기술 스택
+
+- **IDE**: IntelliJ IDEA
+- **언어**: Java 17
+- **Backend**: Spring Boot, Spring Web, Spring Data JPA, Lombok 
+- **DB**: MySQL
+- **빌드 도구**: Gradle
+- **기타 도구**: Postman
+
+---
