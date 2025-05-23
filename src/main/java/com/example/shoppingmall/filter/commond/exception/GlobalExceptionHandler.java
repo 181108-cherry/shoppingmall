@@ -26,4 +26,11 @@ public class GlobalExceptionHandler {
 
 	}
 
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<CommonResponse<Void>> handleMissingParam(Exception e) {
+		return ResponseEntity
+				.status(ErrorCode.RATING_REQUIRED.getHttpStatus())
+				.body(CommonResponse.fail("BAD_REQUEST", ErrorCode.RATING_REQUIRED.getMessage()));
+	}
+
 }

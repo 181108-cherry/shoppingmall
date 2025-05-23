@@ -4,6 +4,8 @@ import com.example.shoppingmall.dto.StoreDto;
 import com.example.shoppingmall.dto.StorePageableResponseDto;
 import com.example.shoppingmall.dto.StoreSummaryResponseDto;
 import com.example.shoppingmall.entity.StoreEntity;
+import com.example.shoppingmall.filter.commond.exception.BaseException;
+import com.example.shoppingmall.filter.commond.exception.ErrorCode;
 import com.example.shoppingmall.repository.StoreRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -95,6 +97,11 @@ public class StoreService {
 
 
 	public List<StoreEntity> rating(int rating) {
+
+		if (rating < 0 || rating > 3) {
+			throw new BaseException(ErrorCode.INVALID_RATING_RANGE);
+		}
+
 		return storeRepository.findByRating(rating, PageRequest.of(0, 10));
 	}
 
