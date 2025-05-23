@@ -4,6 +4,8 @@ import com.example.shoppingmall.dto.StoreDto;
 import com.example.shoppingmall.dto.StorePageableResponseDto;
 import com.example.shoppingmall.dto.StoreSummaryResponseDto;
 import com.example.shoppingmall.entity.StoreEntity;
+import com.example.shoppingmall.filter.commond.exception.BaseException;
+import com.example.shoppingmall.filter.commond.exception.ErrorCode;
 import com.example.shoppingmall.repository.StoreRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -26,6 +28,14 @@ public class StoreService {
 
     // Create
     public StoreDto createStore(StoreDto dto) {
+		if (dto == null || dto.getCompanyName () == null || dto.getCompanyName().isBlank()) {
+			throw new BaseException(ErrorCode.INVALID_STORE_REQUEST);
+		}
+
+		if (storeRepository.existsByStoreNameOrAddress(dto.getCompanyName())) {
+			throw new BaseException(ErrorCode.DUPLICATE_STORE);
+		}
+
 		StoreEntity entity = new StoreEntity();
 		entity.updateEntityFromDto(dto);
         StoreEntity savedEntity = storeRepository.save(entity);
@@ -35,7 +45,7 @@ public class StoreService {
     // Update
     public StoreDto updateStore(Long id, StoreDto dto) {
         StoreEntity existing = storeRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Store not found with id " + id));
+                .orElseThrow(() -> new BaseException(ErrorCode.STORE_NOT_FOUND));
 
 		existing.updateEntityFromDto(dto);
 		StoreEntity savedEntity = storeRepository.save(existing);
@@ -45,7 +55,7 @@ public class StoreService {
     // Delete
     public void deleteStore(Long id) {
         if (!storeRepository.existsById(id)) {
-            throw new EntityNotFoundException("Store not found with id " + id);
+			throw new BaseException(ErrorCode.STORE_DELETE_NOT_FOUND);
         }
         storeRepository.deleteById(id);
     }
@@ -95,6 +105,11 @@ public class StoreService {
 
 
 	public List<StoreEntity> rating(int rating) {
+
+		if (rating < 0 || rating > 3) {
+			throw new BaseException(ErrorCode.INVALID_RATING_RANGE);
+		}
+
 		return storeRepository.findByRating(rating, PageRequest.of(0, 10));
 	}
 
