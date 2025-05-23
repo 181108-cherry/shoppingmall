@@ -1,5 +1,13 @@
 package com.example.shoppingmall.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
 import com.example.shoppingmall.dto.StoreDto;
 import com.example.shoppingmall.dto.StorePageableResponseDto;
 import com.example.shoppingmall.dto.StoreSummaryResponseDto;
@@ -8,57 +16,48 @@ import com.example.shoppingmall.filter.commond.exception.BaseException;
 import com.example.shoppingmall.filter.commond.exception.ErrorCode;
 import com.example.shoppingmall.repository.StoreRepository;
 
-import jakarta.persistence.EntityNotFoundException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class StoreService {
 
-    private final StoreRepository storeRepository;
+	private final StoreRepository storeRepository;
 
-    public StoreService(StoreRepository storeRepository) {
-        this.storeRepository = storeRepository;
-    }
+	public StoreService(StoreRepository storeRepository) {
+		this.storeRepository = storeRepository;
+	}
 
-    // Create
-    public StoreDto createStore(StoreDto dto) {
-		if (dto == null || dto.getCompanyName () == null || dto.getCompanyName().isBlank()) {
+	// Create
+	public StoreDto createStore(StoreDto dto) {
+		if (dto == null || dto.getCompanyName() == null || dto.getCompanyName().isBlank()) {
 			throw new BaseException(ErrorCode.INVALID_STORE_REQUEST);
 		}
 
-		if (storeRepository.existsByStoreNameOrAddress(dto.getCompanyName())) {
+		if (storeRepository.existsByCompanyName(dto.getCompanyName())) {
 			throw new BaseException(ErrorCode.DUPLICATE_STORE);
 		}
 
 		StoreEntity entity = new StoreEntity();
 		entity.updateEntityFromDto(dto);
-        StoreEntity savedEntity = storeRepository.save(entity);
+		StoreEntity savedEntity = storeRepository.save(entity);
 		return savedEntity.updateDtofromEntity();
 	}
 
-    // Update
-    public StoreDto updateStore(Long id, StoreDto dto) {
-        StoreEntity existing = storeRepository.findById(id)
-                .orElseThrow(() -> new BaseException(ErrorCode.STORE_NOT_FOUND));
+	// Update
+	public StoreDto updateStore(Long id, StoreDto dto) {
+		StoreEntity existing = storeRepository.findById(id)
+			.orElseThrow(() -> new BaseException(ErrorCode.STORE_NOT_FOUND));
 
 		existing.updateEntityFromDto(dto);
 		StoreEntity savedEntity = storeRepository.save(existing);
 		return savedEntity.updateDtofromEntity();
-    }
+	}
 
-    // Delete
-    public void deleteStore(Long id) {
-        if (!storeRepository.existsById(id)) {
+	// Delete
+	public void deleteStore(Long id) {
+		if (!storeRepository.existsById(id)) {
 			throw new BaseException(ErrorCode.STORE_DELETE_NOT_FOUND);
-        }
-        storeRepository.deleteById(id);
-    }
+		}
+		storeRepository.deleteById(id);
+	}
 
 	public List<StoreSummaryResponseDto> findTop10ByRatingAndStatus(int rating, String status) {
 		List<StoreEntity> entities = storeRepository.findTop10ByRatingAndStatus(rating, status);
@@ -101,8 +100,6 @@ public class StoreService {
 
 		return result;
 	}
-
-
 
 	public List<StoreEntity> rating(int rating) {
 

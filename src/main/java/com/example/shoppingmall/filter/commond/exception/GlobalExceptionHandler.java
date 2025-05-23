@@ -2,6 +2,7 @@ package com.example.shoppingmall.filter.commond.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -23,14 +24,13 @@ public class GlobalExceptionHandler {
 		return ResponseEntity
 			.status(HttpStatus.INTERNAL_SERVER_ERROR)
 			.body(CommonResponse.fail("INTERNAL_SERVER_ERROR", "예상치 못한 오류가 발생했습니다."));
-
 	}
 
-	@ExceptionHandler(Exception.class)
-	public ResponseEntity<CommonResponse<Void>> handleMissingParam(Exception e) {
+	@ExceptionHandler(MissingServletRequestParameterException.class)
+	public ResponseEntity<CommonResponse<Void>> handleMissingParam(MissingServletRequestParameterException e) {
 		return ResponseEntity
-				.status(ErrorCode.RATING_REQUIRED.getHttpStatus())
-				.body(CommonResponse.fail("BAD_REQUEST", ErrorCode.RATING_REQUIRED.getMessage()));
+			.status(ErrorCode.RATING_REQUIRED.getHttpStatus())
+			.body(CommonResponse.fail("BAD_REQUEST", ErrorCode.RATING_REQUIRED.getMessage()));
 	}
 
 }

@@ -21,7 +21,6 @@ public interface StoreRepository extends JpaRepository<StoreEntity, Long> {
 	List<StoreEntity> findByRating(Integer rating, Pageable pageable);
 
 	// 가게 등록되어있는지 중복 체크
-	boolean existsByStoreNameOrAddress(String companyName);
-
+	boolean existsByCompanyName(String companyName);
 
 }
