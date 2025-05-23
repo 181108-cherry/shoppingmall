@@ -8,10 +8,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "store")
 @Getter
 @Setter
@@ -117,4 +124,7 @@ public class StoreEntity {
 	@Column(name = "monitoring_date", nullable = false)
 	private LocalDate monitoringDate;                // 모니터링날짜
 
+
+
+	///  123123
 }
