@@ -92,7 +92,7 @@ public class StoreController {
 
 		if (!validStatuses.contains(status)) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body("status 입력은 필수입니다.");
+					.body("status 값이 올바르지 않습니다.");
 		}
 
 		// 데이터를 조회하여 응답
