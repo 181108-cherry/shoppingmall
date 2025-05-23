@@ -8,6 +8,11 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum ErrorCode {
+
+	// rating filter Error Code
+	INVALID_RATING_RANGE(HttpStatus.BAD_REQUEST, "전체 평가 점수는 0에서 3 사이의 정수여야 합니다."),
+	RATING_REQUIRED(HttpStatus.BAD_REQUEST, "전체 평가 점수 입력은 필수입니다."),
+
 	// top 10,pageable Error Code
 	INVAILD_RATING(HttpStatus.BAD_REQUEST, "rating은 1~5 사이여야합니다."),
 	INVAILD_STATUS(HttpStatus.BAD_REQUEST, "유효하지 않은 status 입니다."),
