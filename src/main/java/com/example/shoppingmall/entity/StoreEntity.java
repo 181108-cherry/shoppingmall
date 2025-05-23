@@ -2,6 +2,7 @@ package com.example.shoppingmall.entity;
 
 import java.time.LocalDate;
 
+import com.example.shoppingmall.dto.StoreDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -124,7 +125,77 @@ public class StoreEntity {
 	@Column(name = "monitoring_date", nullable = false)
 	private LocalDate monitoringDate;                // 모니터링날짜
 
+	// 모든 필드를 DTO로부터 업데이트
+	public void updateEntityFromDto(StoreDto dto) {
+		this.companyName = dto.getCompanyName();
+		this.shoppingmallName = dto.getShoppingmallName();
+		this.domain = dto.getDomain();
+		this.telephoneNumber = dto.getTelephoneNumber();
+		this.officialEmail = dto.getOfficialEmail();
+		this.registrationNumber = dto.getRegistrationNumber();
+		this.businessType = dto.getBusinessType();
+		this.initialRegistrationDate = dto.getInitialRegistrationDate();
+		this.address = dto.getAddress();
+		this.status = dto.getStatus();
+		this.rating = dto.getRating();
+		this.businessInfoRating = dto.getBusinessInfoRating();
+		this.withdrawalEvaluation = dto.getWithdrawalEvaluation();
+		this.paymentMethodEvaluation = dto.getPaymentMethodEvaluation();
+		this.termsEvaluation = dto.getTermsEvaluation();
+		this.privacySecurityEvaluation = dto.getPrivacySecurityEvaluation();
+		this.mainItemsHandled = dto.getMainItemsHandled();
+		this.withdrawalPossible = dto.getWithdrawalPossible();
+		this.initialScreenRequiredDisplay = dto.getInitialScreenRequiredDisplay();
+		this.paymentMethods = dto.getPaymentMethods();
+		this.termsComplianceLevel = dto.getTermsComplianceLevel();
+		this.privacyPolicy = dto.getPrivacyPolicy();
+		this.excessivePrivacyDataRequested = dto.getExcessivePrivacyDataRequested();
+		this.buyerProtectionService = dto.getBuyerProtectionService();
+		this.secureServerInstalled = dto.getSecureServerInstalled();
+		this.certificationMark = dto.getCertificationMark();
+		this.estimatedDeliveryDisplay = dto.getEstimatedDeliveryDisplay();
+		this.returnShippingFee = dto.getReturnShippingFee();
+		this.complaintBoard = dto.getComplaintBoard();
+		this.membershipCancelationMethod = dto.getMembershipCancelationMethod();
+		this.siteEstablishmentYear = dto.getSiteEstablishmentYear();
+		this.monitoringDate = dto.getMonitoringDate();
+	}
 
-
-	///  123123
+	// 엔터티를 DTO로 변환
+	public StoreDto updateDtofromEntity() {
+		StoreDto dto = new StoreDto();
+		dto.setCompanyName(this.getCompanyName());
+		dto.setShoppingmallName(this.getShoppingmallName());
+		dto.setDomain(this.getDomain());
+		dto.setTelephoneNumber(this.getTelephoneNumber());
+		dto.setOfficialEmail(this.getOfficialEmail());
+		dto.setRegistrationNumber(this.getRegistrationNumber());
+		dto.setBusinessType(this.getBusinessType());
+		dto.setInitialRegistrationDate(this.getInitialRegistrationDate());
+		dto.setAddress(this.getAddress());
+		dto.setStatus(this.getStatus());
+		dto.setRating(this.getRating());
+		dto.setBusinessInfoRating(this.getBusinessInfoRating());
+		dto.setWithdrawalEvaluation(this.getWithdrawalEvaluation());
+		dto.setPaymentMethodEvaluation(this.getPaymentMethodEvaluation());
+		dto.setTermsEvaluation(this.getTermsEvaluation());
+		dto.setPrivacySecurityEvaluation(this.getPrivacySecurityEvaluation());
+		dto.setMainItemsHandled(this.getMainItemsHandled());
+		dto.setWithdrawalPossible(this.getWithdrawalPossible());
+		dto.setInitialScreenRequiredDisplay(this.getInitialScreenRequiredDisplay());
+		dto.setPaymentMethods(this.getPaymentMethods());
+		dto.setTermsComplianceLevel(this.getTermsComplianceLevel());
+		dto.setPrivacyPolicy(this.getPrivacyPolicy());
+		dto.setExcessivePrivacyDataRequested(this.getExcessivePrivacyDataRequested());
+		dto.setBuyerProtectionService(this.getBuyerProtectionService());
+		dto.setSecureServerInstalled(this.getSecureServerInstalled());
+		dto.setCertificationMark(this.getCertificationMark());
+		dto.setEstimatedDeliveryDisplay(this.getEstimatedDeliveryDisplay());
+		dto.setReturnShippingFee(this.getReturnShippingFee());
+		dto.setComplaintBoard(this.getComplaintBoard());
+		dto.setMembershipCancelationMethod(this.getMembershipCancelationMethod());
+		dto.setSiteEstablishmentYear(this.getSiteEstablishmentYear());
+		dto.setMonitoringDate(this.getMonitoringDate());
+		return dto;
+	}
 }
