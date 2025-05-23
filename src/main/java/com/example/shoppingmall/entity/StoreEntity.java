@@ -28,7 +28,7 @@ public class StoreEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; // PK
 
-	@Column(name = "company_name", length = 25, nullable = false) // sql null 금지
+	@Column(name = "company_name", length = 100, nullable = false) // sql null 금지
 	private String companyName;                      // 상호
 
 	@Column(name = "shoppingmall_name", length = 100, nullable = false)
@@ -46,7 +46,7 @@ public class StoreEntity {
 	@Column(name = "registration_number", nullable = false)
 	private String registrationNumber;              // 통신판매번호
 
-	@Column(name = "business_type", length = 25)
+	@Column(name = "business_type", length = 100)
 	private String businessType;                     // 영업형태
 
 	@Column(name = "initial_registration_date", nullable = false)
@@ -76,25 +76,25 @@ public class StoreEntity {
 	@Column(name = "privacy_security_evaluation", nullable = false)
 	private Integer privacySecurityEvaluation;       // 개인정보보안평가
 
-	@Column(name = "main_items_handled", length = 100)
+	@Column(name = "main_items_handled", length = 255)
 	private String mainItemsHandled;                 // 주요취급품목
 
 	@Column(name = "withdrawal_possible", length = 25, nullable = false)
 	private String withdrawalPossible;               // 청약철회가능여부
 
-	@Column(name = "initial_screen_required_display", length = 100)
+	@Column(name = "initial_screen_required_display", length = 255)
 	private String initialScreenRequiredDisplay;     // 초기화면필수항목중표시사항
 
-	@Column(name = "payment_methods", length = 100)
+	@Column(name = "payment_methods", length = 255)
 	private String paymentMethods;                   // 결제방법
 
-	@Column(name = "terms_compliance_level", length = 100, nullable = false)
+	@Column(name = "terms_compliance_level", length = 255, nullable = false)
 	private String termsComplianceLevel;             // 이용약관준수정도
 
-	@Column(name = "privacy_policy", length = 100, nullable = false)
+	@Column(name = "privacy_policy", length = 255, nullable = false)
 	private String privacyPolicy;                    // 개인정보취급방침
 
-	@Column(name = "excessive_privacy_data_requested", length = 100)
+	@Column(name = "excessive_privacy_data_requested", length = 255)
 	private String excessivePrivacyDataRequested;    // 표준약관이상개인정보항목요구
 
 	@Column(name = "buyer_protection_service", length = 25, nullable = false)
