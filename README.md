@@ -1,6 +1,6 @@
 # 🛒 서울시 쇼핑몰 프로젝트
 
-서울시 인터넷 쇼핑물 현황 CRUD 프로젝트
+서울시 인터넷 쇼핑물 정보 관리 시스템
 
 ---
 
@@ -14,6 +14,20 @@
 한시습 : 쇼핑몰 CUD, 시연 영상 촬영
 
 손혜빈 : 업체 조회(필터), 업체 상세 조회, 검색기능, 프로젝트 발표
+
+---
+
+## 🛠️ 기술 스택
+
+- **IDE**: IntelliJ IDEA
+- **언어**: Java 17
+- **Backend**: Spring Boot, Spring Web, Spring Data JPA, Lombok 
+- **DB**: MySQL
+- **빌드 도구**: Gradle
+- **컨벤션**: 네이버 자바 코딩 컨벤션
+- **기타 도구**: Postman
+
+ ---
 
 ## 📁 폴더 구조
 ```
@@ -76,15 +90,16 @@
  ┃ ┃ ┃ ┃ ┃ ┗ 📜ShoppingmallApplicationTests.java
 
 ```
+---
 
+## 📑API 명세서
+![API 1](api1.png)
+![API 2](api2.png)
+![API 3](api3.png)
 
-## 🛠️ 기술 스택
+---
 
-- **IDE**: IntelliJ IDEA
-- **언어**: Java 17
-- **Backend**: Spring Boot, Spring Web, Spring Data JPA, Lombok 
-- **DB**: MySQL
-- **빌드 도구**: Gradle
-- **기타 도구**: Postman
+## 🛸ERD
+![ERD](ERD.webp)
 
 ---
